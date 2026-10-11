@@ -1,0 +1,17 @@
+QUANTUM MARKET — START HERE (Windows + VS Code)
+
+1. Extract this folder. Open the inner quantum-market folder in VS Code (the folder containing package.json).
+2. Install Node.js 22.13+ if needed. Verify in Terminal: node -v and npm -v.
+3. In the VS Code terminal, run: Copy-Item .env.example .env
+4. Open .env. Set ADMIN_EMAIL to your admin email and ADMIN_PASSWORD to a unique password of at least 12 characters. Save it.
+5. In the terminal, run: npm start
+6. Open http://localhost:3000 in Chrome. Keep the terminal open.
+7. Register a buyer or store-owner account in the website. Store owners can add single products; product creation and listing are saved through the backend. Checkout creates database orders; payment proof is submitted for admin verification. Buyers can view/cancel orders, confirm receipt, and confirm COD payment. Owners can view orders and update product price, stock, and status. Admin payment verification uses the backend.
+8. To run backend tests, open a SECOND terminal and run: npm test
+
+IMPORTANT STATUS
+CORE BACKEND CONNECTIONS: login/registration/session, live product listing/creation, COD checkout, online payment-session + UTR/screenshot proof submission, buyer/owner order views, buyer cancel/receipt/COD confirmation, owner product price/stock/status updates, and admin payment verification.
+
+LIMITATIONS: the QR shown in the UI is a placeholder, not a real UPI QR or payment gateway. Never use it to collect money. Some analytics, profile edits, full owner management, product deletion, notifications, and store pause/resume remain local-only. This is a development build, not production-ready.
+
+No demo accounts are pre-created. The admin account is created from the .env settings at server startup. If you change admin credentials after the account was already created in the database, changing .env alone does not reset that existing account.

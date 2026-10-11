@@ -1,0 +1,17 @@
+# Render Blueprint. SQLite needs a persistent disk, which requires a paid instance type.
+services:
+  - type: web
+    name: quantum-market
+    runtime: node
+    plan: starter
+    buildCommand: "echo no build step"
+    startCommand: node server.js
+    healthCheckPath: /api/products
+    disk: { name: qm-data, mountPath: /var/data, sizeGB: 1 }
+    envVars:
+      - { key: NODE_VERSION, value: "22" }
+      - { key: NODE_ENV, value: production }
+      - { key: DB_PATH, value: /var/data/qm.db }
+      - { key: UPLOAD_DIR, value: /var/data/uploads }
+      - { key: ADMIN_EMAIL, sync: false }
+      - { key: ADMIN_PASSWORD, sync: false }
